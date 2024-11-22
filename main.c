@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {   
-    int count = 0;
+
     int count1 = 0;
     int count2 = 0;
 
@@ -23,14 +23,14 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    FILE * destFile1 = fopen(argv[1], "w");
+    FILE * destFile1 = fopen(argv[2], "w");
     if(!destFile1)
     {
         printf("Can't open %s for writing\n", argv[2]);
         exit(1);
     }
 
-    FILE * destFile2 = fopen(argv[1], "w");
+    FILE * destFile2 = fopen(argv[3], "w");
     if(!destFile2)
     {
         printf("Can't open %s for writing\n", argv[3]);
@@ -42,12 +42,9 @@ int main(int argc, char *argv[])
     {
         while (fgets(line, 1000, srcFile) != NULL)
         {   
-            for(int i = 0; line[i] != '\0'; ++i)
-            {
-                count++;
-            }
+           int length = strlen(line) - 1;
 
-            if(count < 20)
+            if(length < 20)
             {
                 for (int j = 0; line[j] != '\0'; ++j)
                 {
