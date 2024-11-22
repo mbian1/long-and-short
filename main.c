@@ -39,11 +39,14 @@ int main(int argc, char *argv[])
 
 
     char line[1000];
-    {
+    {   
+        // Read each line from the source file
         while (fgets(line, 1000, srcFile) != NULL)
-        {   
+        {  
+            // Get the length of the line, excluding the newline character
            int length = strlen(line) - 1;
 
+            // If the line is shorter than 20 characters, convert it to uppercase and write to destFile1
             if(length < 20)
             {
                 for (int j = 0; line[j] != '\0'; ++j)
@@ -55,6 +58,7 @@ int main(int argc, char *argv[])
                 fprintf(destFile1, "%s", line);
             }
 
+            // If the line is 20 characters or longer, convert it to lowercase and write to destFile2
             else
             {
                 for (int j = 0; line[j] != '\0'; ++j)
@@ -69,9 +73,11 @@ int main(int argc, char *argv[])
         }
     }
 
+    // Output the number of lines written to each destination file
     printf("%d lines written to short.txt\n", count1);
     printf("%d lines written to long.txt\n", count2);
 
+    // Close the files
     fclose(srcFile);
     fclose(destFile1);
     fclose(destFile2);
